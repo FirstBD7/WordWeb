@@ -1,36 +1,35 @@
 # 应用服务 WEB 访问端口
 server.port: 8081
 
-# 配置数据源
-datasource:
-  driver-class-name: com.mysql.cj.jdbc.Driver
-  url: jdbc:mysql://localhost:3306/db_word?useUnicode=true&characterEncoding=utf-8&useSSL=false # 修改你的 MySQL 地址和库名
-  username: root
-  password: 12345678
-#  type: com.alibaba.druid.pool.DruidDataSource # 配置连接池
-
-mybatis-plus :
-  type-aliases-package: com.sinosoft.wordweb.chat.domain.entity #别名扫描包
-#  mapper-locations: "classpath*:/mapper/**/*.xml" # Mapper.xml文件地址，默认值
-  configuration:
-    map-underscore-to-camel-case: true #是否开启下划线和驼峰的映射
-    cache-enabled: false #是否开启二级缓存
-  global-config:
-    db-config:
-      id-type: assign_id # id为雪花算法生成,级别比配置低
-      update-strategy: not_null #更新策略:只更新非空字段
-
-
-# Redis服务连接配置
 spring:
-  redis:
-    host: 127.0.0.1
-    port: 6379
-    password: sinosoft!@#admin
-    timeout: 5000ms
-    lettuce:
-      pool:
-        max-active: 8
-        max-idle: 8
-        min-idle: 2
-      shutdown-timeout: 1000ms
+  # 数据源配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_word?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 12345678
+    # type: com.alibaba.druid.pool.DruidDataSource # 配置连接池
+
+  mybatis-plus:
+    type-aliases-package: com.sinosoft.wordweb.chat.domain.entity #别名扫描包
+    configuration:
+      map-underscore-to-camel-case: true #是否开启下划线和驼峰的映射
+      cache-enabled: false #是否开启二级缓存
+    global-config:
+      db-config:
+        id-type: assign_id # id为雪花算法生成,级别比配置低
+        update-strategy: not_null #更新策略:只更新非空字段
+
+  ## Redis服务连接配置
+  #spring:
+  #  redis:
+  #    host: 127.0.0.1
+  #    port: 6379
+  #    password: sinosoft!@#admin
+  #    timeout: 5000ms
+  #    lettuce:
+  #      pool:
+  #        max-active: 8
+  #        max-idle: 8
+  #        min-idle: 2
+  #      shutdown-timeout: 1000ms

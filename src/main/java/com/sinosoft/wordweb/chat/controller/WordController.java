@@ -3,19 +3,21 @@ package com.sinosoft.wordweb.chat.controller;
 
 import com.sinosoft.wordweb.chat.domain.vo.request.AddWordVo;
 import com.sinosoft.wordweb.chat.domain.vo.response.Result;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.sinosoft.wordweb.chat.service.WordService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
 @RequestMapping("/word")
+@RestController
 public class WordController {
+    @Autowired
+    private WordService wordService;
 
     @PostMapping("/add")
-    public Result<String> addWord(@RequestBody AddWordVo vo)
+    public Result<Integer> addWord(@RequestBody AddWordVo vo)
     {
-        System.out.println(vo);
-        return Result.success("添加成功");
+        int addWordNum = wordService.addWord(vo);
+        System.out.println(vo.toString());
+        return Result.success(addWordNum);
     }
 }
