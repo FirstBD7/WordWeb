@@ -8,9 +8,9 @@ import lombok.Data;
 @ApiModel("添加单词请求体")
 public class AddWordVo {
     @ApiModelProperty("单词英文名")
-    private String wordEnglishName;
+    private String wordName;
     @ApiModelProperty("单词中文名")
-    private String wordChineseName;
+    private String wordMeaning;
     @ApiModelProperty("单词分类")
     private String wordClassify;
 }

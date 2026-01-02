@@ -10,15 +10,19 @@ spring:
     password: 12345678
     # type: com.alibaba.druid.pool.DruidDataSource # 配置连接池
 
-  mybatis-plus:
-    type-aliases-package: com.sinosoft.wordweb.chat.domain.entity #别名扫描包
-    configuration:
-      map-underscore-to-camel-case: true #是否开启下划线和驼峰的映射
-      cache-enabled: false #是否开启二级缓存
-    global-config:
-      db-config:
-        id-type: assign_id # id为雪花算法生成,级别比配置低
-        update-strategy: not_null #更新策略:只更新非空字段
+  # MyBatis 核心配置
+mybatis:
+  # 1.配置Mapper XML文件扫描路径
+  # 若你用默认路径（接口与XML同包），可替换为：
+  mapper-locations: classpath:mapper/*.xml
+  # 2. 实体类别名扫描（简化XML配置）
+  type-aliases-package: com.sinosoft.wordweb.chat.domain.entity
+  # 3. 自定义MyBatis运行时配置
+  configuration:
+    map-underscore-to-camel-case: true # 开启驼峰命名自动转换
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 控制台输出SQL（开发环境必备）
+#      default-fetch-size: 100 # 默认查询结果集大小（可选）
+#      default-statement-timeout: 30 # 默认SQL执行超时时间（可选，单位：秒）
 
   ## Redis服务连接配置
   #spring:
