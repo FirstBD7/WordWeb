@@ -6,7 +6,7 @@ import com.sinosoft.wordweb.chat.domain.vo.request.AddWordVo;
 import java.util.List;
 
 public interface WordService {
-    int addWord(AddWordVo vo);
+    void addWord(AddWordVo vo);
 
     List<Word> getWord();
 

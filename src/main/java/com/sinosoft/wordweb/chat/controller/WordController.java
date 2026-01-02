@@ -20,9 +20,9 @@ public class WordController {
     @PostMapping("/add")
     public Result<Integer> addWord(@RequestBody AddWordVo vo)
     {
-        int addWordNum = wordService.addWord(vo);
+        wordService.addWord(vo);
         System.out.println(vo.toString());
-        return Result.success(addWordNum);
+        return Result.success();
     }
 
     @GetMapping("/getAll")

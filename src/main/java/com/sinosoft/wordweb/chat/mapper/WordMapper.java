@@ -12,5 +12,9 @@ public interface WordMapper {
 
     List<Word> list();
 
+    Word selectByName(String wordName);
+
     Integer removeByName(String wordName);
+
+    boolean updateWord(Word word);
 }

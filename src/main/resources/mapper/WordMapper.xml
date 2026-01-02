@@ -14,4 +14,15 @@
     <delete id="removeByName">
         delete from word where word_name = #{wordName,jdbcType=VARCHAR}
     </delete>
+
+    <select id="selectByName" resultType="word">
+        select * from word where word_name = #{wordName,jdbcType=VARCHAR}
+    </select>
+
+    <update id="updateWord" parameterType="Word">
+        update word
+        set (word_meaning, word_classify)
+        value (#{wordMeaning,jdbcType=VARCHAR}, #{wordClassify,jdbcType=VARCHAR})
+        where word_name = #{wordName,jdbcType=VARCHAR}
+    </update>
 </mapper>
