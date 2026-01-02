@@ -21,8 +21,8 @@
 
     <update id="updateWord" parameterType="Word">
         update word
-        set (word_meaning, word_classify)
-        value (#{wordMeaning,jdbcType=VARCHAR}, #{wordClassify,jdbcType=VARCHAR})
+        set word_meaning = #{wordMeaning,jdbcType=VARCHAR},
+            word_classify = #{wordClassify,jdbcType=VARCHAR}
         where word_name = #{wordName,jdbcType=VARCHAR}
     </update>
 </mapper>
