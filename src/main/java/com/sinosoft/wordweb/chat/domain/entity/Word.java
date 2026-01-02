@@ -2,6 +2,8 @@ package com.sinosoft.wordweb.chat.domain.entity;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class Word {
     /**
@@ -21,15 +23,15 @@ public class Word {
      */
     private String wordClassify;
     /**
-     * 查询次数
+     * 单词查询次数
      */
     private Integer selectTimes;
     /**
      * 创建时间
      */
-    private Data creatTime;
+    private Date createTime;
     /**
      * 最后更新时间
      */
-    private Data updateTime;
+    private Date updateTime;
 }

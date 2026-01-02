@@ -2,6 +2,17 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sinosoft.wordweb.chat.mapper.WordMapper">
+
+    <resultMap id="Word" type="com.sinosoft.wordweb.chat.domain.entity.Word">
+        <id column="word_id" property="wordId"/>
+        <result column="word_name" property="wordName"/>
+        <result column="word_meaning" property="wordMeaning"/>
+        <result column="word_classify" property="wordClassify"/>
+        <result column="select_times" property="selectTimes"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
     <insert id="save" parameterType="Word">
         insert into word (word_name, word_meaning, word_classify)
         values (#{wordName,jdbcType=VARCHAR}, #{wordMeaning,jdbcType=VARCHAR}, #{wordClassify,jdbcType=VARCHAR})
