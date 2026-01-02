@@ -17,4 +17,6 @@ public interface WordMapper {
     Integer removeByName(String wordName);
 
     boolean updateWord(Word word);
+
+    boolean updateSelectTimes(String wordName);
 }

@@ -35,6 +35,7 @@ public class WordServiceImpl implements WordService {
                     word.setWordClassify(vo.getWordClassify());
                     wordMapper.updateWord(word);
                 }
+                wordMapper.updateSelectTimes(vo.getWordName());
             }catch (Exception e)
             {
                 log.info(e.getMessage());

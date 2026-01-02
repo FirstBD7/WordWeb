@@ -4,7 +4,7 @@
 <mapper namespace="com.sinosoft.wordweb.chat.mapper.WordMapper">
     <insert id="save" parameterType="Word">
         insert into word (word_name, word_meaning, word_classify)
-        values (#{wordName,jdbcType=VARCHAR}, #{wordMeaning,jdbcType=VARCHAR}, #{wordClassify})
+        values (#{wordName,jdbcType=VARCHAR}, #{wordMeaning,jdbcType=VARCHAR}, #{wordClassify,jdbcType=VARCHAR})
     </insert>
 
     <select id="list" resultType="Word">
@@ -15,7 +15,7 @@
         delete from word where word_name = #{wordName,jdbcType=VARCHAR}
     </delete>
 
-    <select id="selectByName" resultType="word">
+    <select id="selectByName" resultType="Word">
         select * from word where word_name = #{wordName,jdbcType=VARCHAR}
     </select>
 
@@ -23,6 +23,12 @@
         update word
         set word_meaning = #{wordMeaning,jdbcType=VARCHAR},
             word_classify = #{wordClassify,jdbcType=VARCHAR}
+        where word_name = #{wordName,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateSelectTimes">
+        update word
+            set select_times = select_times + 1
         where word_name = #{wordName,jdbcType=VARCHAR}
     </update>
 </mapper>
