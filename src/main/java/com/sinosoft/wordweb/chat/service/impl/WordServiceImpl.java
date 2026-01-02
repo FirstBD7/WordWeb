@@ -10,8 +10,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 @Slf4j
@@ -24,43 +22,37 @@ public class WordServiceImpl implements WordService {
     public void addWord(AddWordVo vo) {
         String wordMeaning = null;
         Word word = new Word();
-//        if(StringUtils.isNotBlank(wordMapper.selectByName(vo.getWordName()).getWordName())
-//                && StringUtils.isNotBlank(wordMapper.selectByName(vo.getWordName()).getWordMeaning())){
-//        }
-        if(wordMapper.selectByName(vo.getWordName()) != null)
+        Word wordFlag = wordMapper.selectByName(vo.getWordName());
+
+        if(wordFlag != null)
         {
             try {
-                wordMeaning = translateUtil.getTransResult(vo.getWordName());
-                if(StringUtils.isBlank(wordMeaning))
+                if(StringUtils.isBlank(wordFlag.getWordMeaning()))
                 {
-                    log.info("翻译结果为空");
+                    wordMeaning = translateUtil.getTransResult(vo.getWordName());
+                    word.setWordName(vo.getWordName());
+                    word.setWordMeaning(wordMeaning);
+                    word.setWordClassify(vo.getWordClassify());
+                    wordMapper.updateWord(word);
                 }
             }catch (Exception e)
             {
                 log.info(e.getMessage());
             }
-            word.setWordName(vo.getWordName());
-            word.setWordMeaning(wordMeaning);
-            word.setWordClassify(vo.getWordClassify());
-            wordMapper.updateWord(word);
         }
-        if(wordMapper.selectByName(vo.getWordName()) == null){
+        if(wordFlag == null){
             try {
                 wordMeaning = translateUtil.getTransResult(vo.getWordName());
-                if(StringUtils.isBlank(wordMeaning)) {
-                    log.info("翻译结果为空");
-                }
+                word.setWordName(vo.getWordName());
+                word.setWordMeaning(wordMeaning);
+                word.setWordClassify(vo.getWordClassify());
+                wordMapper.save(word);
             }
             catch (Exception e)
             {
                 log.info(e.getMessage());
             }
-            word.setWordName(vo.getWordName());
-            word.setWordMeaning(wordMeaning);
-            word.setWordClassify(vo.getWordClassify());
-            wordMapper.save(word);
         }
-
     }
 
     @Override
