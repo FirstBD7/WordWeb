@@ -16,4 +16,8 @@
         where user_name = #{userName,jdbcType=VARCHAR}
           and pass_word = #{passWord,jdbcType=VARCHAR,jdbcType=VARCHAR}
     </select>
+
+    <select id="selectUserIdByUserName" resultType="int">
+        select user_id from user_info where user_name = #{userName,jdbcType=VARCHAR}
+    </select>
 </mapper>

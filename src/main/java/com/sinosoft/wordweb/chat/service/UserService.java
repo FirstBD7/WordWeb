@@ -1,6 +1,8 @@
 package com.sinosoft.wordweb.chat.service;
 
+import com.sinosoft.wordweb.chat.domain.vo.response.LoginResponseVo;
+
 public interface UserService {
 
-    String login(String userName, String passWord);
+    LoginResponseVo login(String userName, String passWord);
 }

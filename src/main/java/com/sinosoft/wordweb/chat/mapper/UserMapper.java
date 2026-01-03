@@ -7,4 +7,6 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface UserMapper {
     User login(@Param("userName") String userName, @Param("passWord") String passWord);
+
+    int selectUserIdByUserName(String userName);
 }

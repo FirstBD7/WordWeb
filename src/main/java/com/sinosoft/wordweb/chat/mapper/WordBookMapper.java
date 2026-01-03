@@ -9,6 +9,7 @@ import java.util.List;
 @Mapper
 public interface WordBookMapper {
 
+
     void addWord(WordBook wordBook);
 
     List<ResponseBookVo> getAll(String bookName, int userId);

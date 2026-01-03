@@ -19,4 +19,6 @@ public interface WordMapper {
     boolean updateWord(Word word);
 
     boolean updateSelectTimes(String wordName);
+
+    int selectWordIdByWordName(String wordName);
 }

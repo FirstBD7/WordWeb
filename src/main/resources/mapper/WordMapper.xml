@@ -42,4 +42,8 @@
             set select_times = select_times + 1
         where word_name = #{wordName,jdbcType=VARCHAR}
     </update>
+
+    <select id="selectWordIdByWordName" resultType="int">
+        select word_id from word where word_name = #{wordName,jdbcType=VARCHAR}
+    </select>
 </mapper>

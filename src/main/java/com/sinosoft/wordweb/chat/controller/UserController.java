@@ -1,6 +1,7 @@
 package com.sinosoft.wordweb.chat.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.sinosoft.wordweb.chat.domain.vo.response.LoginResponseVo;
 import com.sinosoft.wordweb.chat.domain.vo.response.Result;
 import com.sinosoft.wordweb.chat.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/login")
-    public Result<String> login(@RequestBody String user) {
+    public Result<LoginResponseVo> login(@RequestBody String user) {
         JSONObject jsonObject = JSONObject.parseObject(user);
         String userName = jsonObject.getString("userName");
         String passWord = jsonObject.getString("passWord");
