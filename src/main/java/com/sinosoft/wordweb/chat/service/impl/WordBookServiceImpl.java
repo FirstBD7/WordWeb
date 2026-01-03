@@ -33,7 +33,7 @@ public class WordBookServiceImpl implements WordBookService {
     }
 
     @Override
-    public List<ResponseBookVo> getAll(String bookName, int userId) {
-        return wordBookMapper.getAll(bookName, userId);
+    public List<ResponseBookVo> getAll(String bookName, String userName) {
+        return wordBookMapper.getAll(bookName, userMapper.selectUserIdByUserName(userName));
     }
 }

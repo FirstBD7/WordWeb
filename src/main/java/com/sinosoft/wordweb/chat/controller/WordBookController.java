@@ -22,8 +22,8 @@ public class WordBookController {
     }
 
     @GetMapping("/getAll")
-    public Result<List<ResponseBookVo>> getWordBookAll(@RequestParam(defaultValue = "默认单词本") String bookName,
-                                                       @RequestParam Integer userId){
-        return Result.success(wordBookService.getAll(bookName, userId));
+    public Result<List<ResponseBookVo>> getWordBookAll(@RequestParam(defaultValue = "单词本") String bookName,
+                                                       @RequestParam String  userName){
+        return Result.success(wordBookService.getAll(bookName, userName));
     }
 }

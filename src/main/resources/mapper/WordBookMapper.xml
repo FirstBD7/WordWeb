@@ -17,7 +17,7 @@
         <result column="word_classify" property="wordClassify"/>
     </resultMap>
     <insert id="addWord" parameterType="com.sinosoft.wordweb.chat.domain.entity.WordBook">
-        insert into user_word_book (book_name, user_id, word_id, master_status, is_collect)
+        insert ignore into user_word_book (book_name, user_id, word_id, master_status, is_collect)
             values (#{bookName}, #{userId}, #{wordId}, #{masterStatus}, #{isCollect})
     </insert>
 
