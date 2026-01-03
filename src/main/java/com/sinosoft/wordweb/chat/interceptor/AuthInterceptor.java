@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.sinosoft.wordweb.chat.domain.vo.response.Result;
 import com.sinosoft.wordweb.chat.utils.JwtUtils;
 import io.swagger.models.HttpMethod;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 
 @Component
+@Slf4j
 public class AuthInterceptor implements HandlerInterceptor {
 
     @Override
@@ -24,7 +26,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 
         // 获取Authorization头
         String authorization = request.getHeader("Authorization");
-
+        log.info("authorization:{}", authorization);
         if (authorization == null || !authorization.startsWith("Bearer ")) {
             response.setStatus(401);
             // 强制设置编码，避免中文乱码

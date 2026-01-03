@@ -1,15 +1,13 @@
 package com.sinosoft.wordweb.chat.controller;
 
-import com.sinosoft.wordweb.chat.domain.entity.Word;
 import com.sinosoft.wordweb.chat.domain.vo.request.AddWordVo;
+import com.sinosoft.wordweb.chat.domain.vo.response.PageResult;
 import com.sinosoft.wordweb.chat.domain.vo.response.Result;
 import com.sinosoft.wordweb.chat.service.WordService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RequestMapping("/word")
 @RestController
@@ -26,7 +24,7 @@ public class WordController {
     }
 
     @GetMapping("/getAll")
-    public Result<List<Word>> getWord()
+    public Result<List<AddWordVo>> getWord()
     {
         return Result.success(wordService.getWord());
     }
@@ -35,5 +33,12 @@ public class WordController {
     public Result<Integer> deleteWord(@PathVariable("name") String name)
     {
         return Result.success(wordService.deleteWord(name));
+    }
+
+    @PostMapping("/getList")
+    public Result<PageResult<AddWordVo>> getList(@RequestParam(defaultValue = "1") int pageNo,
+                                          @RequestParam(defaultValue = "10") int pageSize)
+    {
+        return Result.success(wordService.getList(pageNo, pageSize));
     }
 }
