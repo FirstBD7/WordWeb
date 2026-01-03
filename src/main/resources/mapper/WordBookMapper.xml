@@ -1,0 +1,37 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sinosoft.wordweb.chat.mapper.WordBookMapper">
+    <resultMap id="WordBook" type="com.sinosoft.wordweb.chat.domain.entity.WordBook">
+        <id column="id" property="id"/>
+        <result column="book_name" property="bookName"/>
+        <result column="user_id" property="userId"/>
+        <result column="word_id" property="wordId"/>
+        <result column="master_status" property="masterStatus"/>
+        <result column="is_collect" property="isCollect"/>
+    </resultMap>
+    <resultMap id="Word" type="com.sinosoft.wordweb.chat.domain.entity.Word">
+        <id column="word_id" property="wordId"/>
+        <result column="word_name" property="wordName"/>
+        <result column="word_meaning" property="wordMeaning"/>
+        <result column="word_classify" property="wordClassify"/>
+    </resultMap>
+    <insert id="addWord" parameterType="com.sinosoft.wordweb.chat.domain.entity.WordBook">
+        insert into user_word_book (book_name, user_id, word_id, master_status, is_collect)
+            values (#{bookName}, #{userId}, #{wordId}, #{masterStatus}, #{isCollect})
+    </insert>
+
+    <select id="getAll" resultType="com.sinosoft.wordweb.chat.domain.vo.response.ResponseBookVo">
+        SELECT
+            w.word_id,
+            w.word_name,
+            w.word_meaning
+        FROM
+            user_word_book uwb
+                INNER JOIN
+            word w ON uwb.word_id = w.word_id
+        WHERE
+            uwb.user_id = 1   -- 前端传入的user_id
+          AND uwb.book_name = "1";  -- 前端传入的book_name
+    </select>
+</mapper>

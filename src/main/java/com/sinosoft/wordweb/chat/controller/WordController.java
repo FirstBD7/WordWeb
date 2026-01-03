@@ -35,7 +35,7 @@ public class WordController {
         return Result.success(wordService.deleteWord(name));
     }
 
-    @PostMapping("/getList")
+    @GetMapping("/getList")
     public Result<PageResult<AddWordVo>> getList(@RequestParam(defaultValue = "1") int pageNo,
                                           @RequestParam(defaultValue = "10") int pageSize)
     {
