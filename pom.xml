@@ -12,6 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>2.6.13</spring-boot.version>
+        <start-class>com.sinosoft.wordweb.WordWebApplication</start-class>
     </properties>
     <dependencies>
         <dependency>
@@ -139,8 +140,6 @@
                 <version>${spring-boot.version}</version>
                 <configuration>
                     <mainClass>com.sinosoft.wordweb.WordWebApplication</mainClass>
-                    <!-- 关键修改：删除skip: true 或改为skip: false -->
-                    <skip>false</skip>
                 </configuration>
                 <executions>
                     <execution>
