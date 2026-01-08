@@ -14,7 +14,7 @@ public class GlobalCorsConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**") // 对所有接口生效（可改为特定路径，如"/word/**"）
                 // 允许的前端域名（多个域名用逗号分隔，或用"*"允许所有，但不建议生产环境用"*"）
-                .allowedOrigins("http://localhost:8080")
+                .allowedOriginPatterns("http://8.130.106.204:8083")
                 // 允许的HTTP请求方法（GET/POST/PUT/DELETE等）
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 // 允许的请求头（如自定义的Token头、Content-Type等）

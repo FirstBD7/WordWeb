@@ -139,7 +139,8 @@
                 <version>${spring-boot.version}</version>
                 <configuration>
                     <mainClass>com.sinosoft.wordweb.WordWebApplication</mainClass>
-                    <skip>true</skip>
+                    <!-- 关键修改：删除skip: true 或改为skip: false -->
+                    <skip>false</skip>
                 </configuration>
                 <executions>
                     <execution>
